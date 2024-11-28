@@ -1,0 +1,111 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookApp</title>
+
+    <!-- Custom styles for this template-->
+    <link href="{% static 'bookstore/css/login.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/datatables/dataTables.bootstrap4.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <!-- External Libraries -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+    <!-- Custom CSS for background -->
+    <style>
+        body {
+            background-image: url("{% static 'css/img2.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <aside class="col-sm-4"></aside>
+
+            <aside class="col-sm-4">
+                <br>
+                <div class="card">
+                    <article class="card-body" style="padding-top: 0px">
+                        <div class="d-flex justify-content-center">
+                            <div class="container">
+                                <div class="d-flex justify-content-center h-100">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <center><h3>Login</h3></center>
+                                            <div class="d-flex justify-content-end">
+                                                <span><i class="fab fa-user"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <form method="POST" action="{% url 'login' %}">
+                                                {% csrf_token %}
+                                                <div class="input-group form-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" style="background-color: #800020;">
+                                                            <i class="fas fa-user" style="color: black;"></i>
+                                                        </span>
+                                                    </div>
+                                                    <input type="text" class="form-control" placeholder="Username" name="username" required="">
+                                                </div>
+                                                
+                                                <div class="input-group form-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" style="background-color: #800020;">
+                                                            <i class="fas fa-key" style="color: black;"></i>
+                                                        </span>
+                                                    </div>
+                                                    <input type="password" class="form-control" placeholder="Password" name="password" required="">
+                                                </div>
+                                               
+                                                
+                                                
+                                                                                                
+                                                <div class="form-group">
+                                                    <input type="submit" name="sign-in" value="Sign in" class="btn float-left login_btn" style="background-color: #800020; color: white; border: none;">
+                                                </div>
+                                                <div class="form-group">
+                                                    <a href="{% url 'regform' %}">
+                                                        <input name="sign-up" value="Register" class="btn float-right login_btn" style="background-color: #800020; color: white; border: none;">
+                                                    </a>
+                                                </div>
+                                                
+                                            </form>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="d-flex justify-content-center">
+                                                {% if messages %}
+                                                    <div class="messages">
+                                                        {% for message in messages %}
+                                                            <a class="alert alert-success" style="color:rgb(225, 11, 11);">{{ message }}</a>
+                                                        {% endfor %}
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </aside>
+
+            <aside class="col-sm-4"></aside>
+        </div>
+    </div>
+</body>
+</html>

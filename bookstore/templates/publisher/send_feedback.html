@@ -1,0 +1,165 @@
+{% extends 'publisher/base.html' %}
+{% load static %}
+
+
+{% block body %}
+<style>/* Style for the main container */
+ 
+  
+  /* Styling the feedback card */
+  .card {
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      background-color: #fff1e6; /* Keeps cards with a clean white background */
+  }
+  
+  /* Header style */
+  .card-header {
+      background-color: #732626;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.2em;
+      text-align: center;
+  }
+  
+  /* Feedback form */
+  .form-group label {
+      color: #333;
+      font-weight: bold;
+      font-size: 1em;
+  }
+  
+  .form-control {
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      resize: none;
+      background-color: #f7faff; /* Soft background for the text area */
+  }
+  
+  /* Submit button */
+  .btn-primary {
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      padding: 10px 20px;
+      transition: background-color 0.3s;
+  }
+  
+  .btn-primary:hover {
+      background-color: #0056b3;
+  }
+  
+  /* Message alert styling */
+  .alert {
+      border-radius: 5px;
+      font-size: 0.9em;
+      text-align: center;
+      background-color: #e0f7fa; /* Light cyan background for message alerts */
+      color: #00796b; /* Darker cyan text color */
+  }
+  
+  /* Footer and message container */
+  .card-footer {
+      background-color: #eaf3fc; /* Same as main container background for cohesion */
+      padding: 15px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+      .card {
+          margin-top: 20px;
+      }
+  
+      .form-group label {
+          font-size: 0.9em;
+      }
+  }
+  </style>
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-3" style="color: red">
+  <p style="color: blue"></p>  
+</div>
+
+
+
+<div class="col-sm-6" style="padding-top: 87px">
+    <div class="card">
+  <div class="card-header">
+          <i class="fas fa-table text-primary"></i>
+    Send Us Your Feedback 
+  </div>
+</div>
+
+
+<div class="card mb-4">
+<div class="card-body">
+
+<div class="row">
+	<div class="col-sm-4"></div>
+	<div class="form-group">
+    <form action="{% url 'send_feedback' %}" method="POST">
+    {% csrf_token %}
+  <label for="comment">Type Below Your Feedback</label>
+  <textarea class="form-control" rows="5" id="comment" name="feedback"></textarea>
+  <br>
+  <a href=""><button type="submit" class="btn btn-primary"> Send</button></a>
+</form>
+
+<br>
+<br>
+   <div class="card-footer">
+        <div class="d-flex justify-content-center">
+
+<div style="color: blue">
+
+              {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+              </div>
+      </div>
+</div>
+
+	<div class="col-sm-4"></div>
+	</div>
+
+
+                      </div>
+                    </div>  
+                  </div>
+
+</div>
+
+
+
+<div class="col-sm-3" style="color: red">
+</div>
+
+</div>
+</div>
+
+    <script type="text/javascript" src="{% static 'js/jquery-2.1.3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.dataTables.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
